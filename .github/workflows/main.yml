@@ -29,15 +29,15 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
+jobs-author:
+  contextos-02:
+    ...
   jobs-author:
-    autor_info:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Nome do autor
-          run: echo "Autor: $
- {{ github.event.head_commit.author.name }}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Nome do autor
+        run: echo "Autor: ${{ github.event.head_commit.author.name }}"
+      - name: Email do autor
+        run: echo "Email: ${{ github.event.head_commit.author.email }}"
 
-        - name: Email do autor
-          run: echo "Email: $
- {{ github.event.head_commit.author.email }}"
 
