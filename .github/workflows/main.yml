@@ -1,43 +1,55 @@
 name: Como usar variavel de ambiente e contexto do GitHub Actions
 on: 
-    workflow_dispatch:
+  workflow_dispatch:
+
 env:
   ENV_WORKFLOW: "Valor WORKFLOW"
+
 jobs:
   contextos:
     runs-on: ubuntu-latest
     env:
-        ENV_JOB: "Valor JOB CONTEXT"
+      ENV_JOB: "Valor JOB CONTEXT"
     steps:
       - name: Contexto GitHub
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+
       - name: Contexto env
         env:
           ENV_CONTEXT: ${{ toJson(env) }}
         run: echo "$ENV_CONTEXT"
+
       - name: Contexto job
         env:
           JOB_CONTEXT: ${{ toJson(job) }}
         run: echo "$JOB_CONTEXT"
+
       - name: Contexto steps
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
+
       - name: Contexto runner
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
-jobs-author:
-  contextos-02:
-    ...
+
+  jobs-02:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exemplo de passo
+        run: echo "Passo exemplo no jobs-02"
+
   jobs-author:
     runs-on: ubuntu-latest
     steps:
       - name: Nome do autor
         run: echo "Autor: ${{ github.event.head_commit.author.name }}"
+
       - name: Email do autor
-        run: echo "Email: ${{ github.event.head_commit.author.email }}"
+        run: |
+          echo "Email: ${{ github.event.head_commit.author.email }}"
 
 
