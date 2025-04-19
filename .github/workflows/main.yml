@@ -29,7 +29,4 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
-      - name: Contexto author
-        env:
-          RUNNER_CONTEXT: ${{ toJson(author) }}
-        run: echo "$AUTHOR_CONTEXT"
+
