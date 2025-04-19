@@ -46,10 +46,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Nome do autor
-        run: echo "Autor: ${{ github.event.head_commit.author.name }}"
+        run: |
+         echo "Autor: ${{ github.event.head_commit.author.name }}"
 
       - name: Email do autor
         run: |
-          echo "Email: ${{ github.event.head_commit.author.email }}"
+          echo "Email: ${{ github.event.head_commit.author.email != null && github.event.head_commit.author.email || 'Email not available' }}"
 
 
