@@ -9,7 +9,7 @@ jobs:
     env:
         ENV_JOB: "Valor JOB CONTEXT"
     steps:
-      - name: Contexto github
+      - name: Contexto GitHub
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
@@ -29,3 +29,7 @@ jobs:
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
+      - name: Contexto author
+        env:
+          RUNNER_CONTEXT: ${{ toJson(author) }}
+        run: echo "$AUTHOR_CONTEXT"
